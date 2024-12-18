@@ -1,0 +1,7 @@
+{
+  "name": "catBreeds",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
