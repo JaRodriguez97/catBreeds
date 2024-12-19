@@ -1,0 +1,18 @@
+<ion-card (click)="selectCat(gato)">
+  <ion-card-header class="row">
+    <ion-card-title>{{ gato.id }}</ion-card-title>
+    <ion-card-subtitle>Ver detalles</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-img
+    [alt]="gato.description"
+    [src]="
+      'https://cdn2.thecatapi.com/images/' + gato.reference_image_id + '.jpg'
+    "
+  ></ion-img>
+
+  <ion-card-content class="row">
+    <ion-text>Origen: {{ gato.origin }}</ion-text>
+    <ion-text>Inteligencia: {{ gato.intelligence }}</ion-text>
+  </ion-card-content>
+</ion-card>
