@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient /* HttpHeaders */ } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { CatModel } from '@models/cat/cat.model';
 import { environment } from '@env/environment.prod';
 import { Storage } from '@ionic/storage-angular';
@@ -8,16 +8,10 @@ import { Storage } from '@ionic/storage-angular';
   providedIn: 'root',
 })
 export class CatsService {
-  // private API_KEY = environment.API_KEY;
   private URL = environment.URL;
-
   public cats: CatModel[] = [];
   public catSelected!: CatModel;
-
-  // 'x-api-key': this.API_KEY,
-  // private headers = new HttpHeaders();
-
-  private readonly STORAGE_KEY = 'selectedCat'; // Clave para almacenar el objeto
+  private readonly STORAGE_KEY = 'selectedCat';
 
   constructor(private http: HttpClient, private storage: Storage) {
     this.init();
@@ -28,10 +22,7 @@ export class CatsService {
   }
 
   getCats() {
-    return this.http.get<CatModel[]>(
-      this.URL
-      /* { headers: this.headers } */
-    );
+    return this.http.get<CatModel[]>(this.URL);
   }
 
   // Guarda el objeto seleccionado en almacenamiento

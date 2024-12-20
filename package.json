@@ -6,10 +6,10 @@
   "scripts": {
     "ng": "ng",
     "dev": "npm run build && npx cap add android && npx cap add ios && npx capacitor-assets generate && npx cap sync android && npx cap open android",
-    "c": "ng g c share/components/card-item",
+    "c": "ng g c share/components/card-skeleton-text",
     "i": "ng g i core/models/cat/cat.model",
     "s": "ng g s core/services/cats/cats",
-    "p": "ng g page pages/details",
+    "p": "ng g page pages/custom-splash",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",

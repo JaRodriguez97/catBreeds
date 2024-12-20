@@ -9,12 +9,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./card-item.component.scss'],
 })
 export class CardItemComponent {
-  @Input() gato!: CatModel;
+  @Input() cat!: CatModel;
 
   constructor(private catsService: CatsService, private router: Router) {}
 
   async selectCat(cat: CatModel) {
-    // Guarda el gato seleccionado y navega a la página de detalles
     await this.catsService.setSelectedCat(cat);
 
     this.router.navigate(['details', cat.id]);
