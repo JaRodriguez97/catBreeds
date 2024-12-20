@@ -1,0 +1,17 @@
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.image-container {
+  aspect-ratio: 1 / 1;
+  height: 84vw;
+  width: 100%;
+  object-fit: cover;
+
+  @media (min-width: 768px) {
+    height: 20vw;
+  }
+}

@@ -1,70 +1,55 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Gatos por Raza</ion-title>
+    <ion-title>Cat Breeds</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <!-- Pull-to-refresh -->
   <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
+  <!-- Collapsible header -->
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Gatos por Raza</ion-title>
+      <ion-title size="large">Cat Breeds arround of world</ion-title>
     </ion-toolbar>
   </ion-header>
 
+  <!-- Search bar -->
   <ion-toolbar class="label-fixed">
     <ion-searchbar
       animated="true"
       [debounce]="1000"
       (ionInput)="handleInput($event)"
-      placeholder="¿Se te ocurre buscar alguna raza?"
+      placeholder="Looking for a breed?"
     ></ion-searchbar>
   </ion-toolbar>
 
-  <!--  <ion-toolbar>
-    <ion-segment [scrollable]="true" value="heart">
-      <ion-segment-button value="home">
-        <ion-icon name="home"></ion-icon>
-      </ion-segment-button>
-      <ion-segment-button value="heart">
-        <ion-icon name="heart"></ion-icon>
-      </ion-segment-button>
-      <ion-segment-button value="pin">
-        <ion-icon name="pin"></ion-icon>
-      </ion-segment-button>
-      <ion-segment-button value="star">
-        <ion-icon name="star"></ion-icon>
-      </ion-segment-button>
-      <ion-segment-button value="call">
-        <ion-icon name="call"></ion-icon>
-      </ion-segment-button>
-      <ion-segment-button value="globe">
-        <ion-icon name="globe"></ion-icon>
-      </ion-segment-button>
-      <ion-segment-button value="basket">
-        <ion-icon name="basket"></ion-icon>
-      </ion-segment-button>
-      <ion-segment-button value="barbell">
-        <ion-icon name="barbell"></ion-icon>
-      </ion-segment-button>
-      <ion-segment-button value="trash">
-        <ion-icon name="trash"></ion-icon>
-      </ion-segment-button>
-      <ion-segment-button value="person">
-        <ion-icon name="person"></ion-icon>
-      </ion-segment-button>
-    </ion-segment>
-  </ion-toolbar> -->
+  <!-- List of items -->
+  <ng-container *ngIf="cats.length; else skeletonList">
+    <ion-list class="grid-list">
+      <ion-item
+        *ngFor="let cat of (results.length ? results : cats)"
+        lines="none"
+      >
+        <app-card-item *ngIf="cat" [cat]="cat"></app-card-item>
+      </ion-item>
+    </ion-list>
+  </ng-container>
 
-  <ion-list>
-    <ion-item
-      *ngFor="let gato of (results.length ? results : catsService.cats)"
-      lines="none"
-    >
-      <app-card-item [gato]="gato"></app-card-item>
-    </ion-item>
-  </ion-list>
+  <!-- Skeleton loader -->
+  <ng-template #skeletonList>
+    <ion-list class="grid-list">
+      <ion-item *ngFor="let _ of skeletonArray">
+        <app-card-skeleton-text style="width: 100%"></app-card-skeleton-text>
+      </ion-item>
+    </ion-list>
+  </ng-template>
+
+  <!-- Infinite scroll -->
+  <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
