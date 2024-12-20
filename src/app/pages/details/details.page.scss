@@ -1,10 +1,40 @@
 .no-scroll {
-  --overflow: hidden; 
+  --overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  ion-content.no-scroll div {
+    display: flex;
+    flex: auto;
+    flex-direction: row;
+  }
 }
 
 .image-container {
-  height: 50vh;
+  height: 45vh;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (min-width: 768px) {
+    width: 50vw;
+    height: 90vh;
+  }
+}
+
+ion-content.ion-padding {
+  height: 60vh;
+
+  @media (min-width: 768px) {
+    width: 50vw;
+    height: 90vh;
+  }
+}
+
+ion-content.ion-padding {
+  --padding-bottom: 15vh;
+
+  @media (min-width: 768px) {
+    --padding-bottom: 1vh;
+  }
 }
