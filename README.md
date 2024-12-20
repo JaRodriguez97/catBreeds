@@ -42,22 +42,28 @@ Clona este repositorio en tu máquina local:
 ```bash
 git clone https://github.com/JaRodriguez97/catBreeds.git
 cd catBreeds
-
 ```
+
 ### 2. Instalar Dependencias 📦
 Asegúrate de tener Node.js (v16 o superior) y Ionic CLI instalados. Luego, instala las dependencias:
 
+```bash
 npm install
+```
 
 ### 3. Ejecutar la Aplicación 🚀
 Levanta el servidor de desarrollo y abre la aplicación en el navegador:
 
+```bash
 ionic serve
+```
 
 ### 4. Abrir en el android Studio
 Teniendo instalado previamente el Android Studio, con el siguiente comando se podrá generar la carpeta WWW, android e ios para posteriormente lanzar el editor y visualizar su funcionamiento:
 
+```bash
 npm run dev
+```
 
 ---
 
