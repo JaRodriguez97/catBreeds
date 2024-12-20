@@ -4,6 +4,16 @@
   </ion-toolbar>
 </ion-header>
 
+<!-- Search bar -->
+<ion-toolbar class="ion-fixed">
+  <ion-searchbar
+    animated="true"
+    [debounce]="1000"
+    (ionInput)="handleInput($event)"
+    placeholder="Looking for a breed?"
+  ></ion-searchbar>
+</ion-toolbar>
+
 <ion-content>
   <!-- Pull-to-refresh -->
   <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
@@ -16,16 +26,6 @@
       <ion-title size="large">Cat Breeds arround of world</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <!-- Search bar -->
-  <ion-toolbar class="label-fixed">
-    <ion-searchbar
-      animated="true"
-      [debounce]="1000"
-      (ionInput)="handleInput($event)"
-      placeholder="Looking for a breed?"
-    ></ion-searchbar>
-  </ion-toolbar>
 
   <!-- List of items -->
   <ng-container *ngIf="cats.length; else skeletonList">
