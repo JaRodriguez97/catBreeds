@@ -84,4 +84,10 @@ export class DetailsPage implements OnInit {
       (url.startsWith('https') || url.startsWith('http'))
     );
   }
+
+  cleanSnakeCamalcase(property: string): string {
+    if (property.indexOf('_') !== -1) property = property.split('_').join(' ');
+
+    return property;
+  }
 }

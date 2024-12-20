@@ -10,7 +10,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="no-scroll" *ngIf="selectedCat">
+<ion-content scrollY="false" *ngIf="selectedCat">
   <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
@@ -30,14 +30,14 @@
     <ion-content class="ion-padding">
       <ion-text class="ion-margin-bottom">
         <ion-label>Description: </ion-label>
-        <p>{{selectedCat.description}}</p>
+        <p style="text-align: justify">{{selectedCat.description}}</p>
       </ion-text>
 
       <ion-list>
         <ng-container *ngFor="let prop of objectEntries">
-          <ion-item *ngIf="prop[0] !=='description'">
+          <ion-item *ngIf="cleanSnakeCamalcase(prop[0]) !=='description'">
             <ng-container *ngIf="validateObject(prop[1])">
-              <ion-label>{{ prop[0] }}: </ion-label>
+              <ion-label>{{ cleanSnakeCamalcase(prop[0]) }}: </ion-label>
               <p class="ion-margin" *ngFor="let item of entries(prop[1])">
                 <ion-label> {{ item[0] }} </ion-label>
                 {{ item[1] }}
@@ -52,14 +52,14 @@
                 style="color: inherit; text-decoration: none"
               >
                 <ion-label>
-                  {{ prop[0] }}:
+                  {{ cleanSnakeCamalcase(prop[0]) }}:
                   <p>{{ prop[1] }}</p>
                 </ion-label>
               </a>
 
               <ng-container *ngIf="!validateUrl(prop[1])">
                 <ion-label>
-                  {{ prop[0] }}:
+                  {{ cleanSnakeCamalcase(prop[0]) }}:
                   <p *ngIf="validateLength(prop[1])">{{ prop[1] || 'N/A' }}</p>
                 </ion-label>
                 <p *ngIf="!validateLength(prop[1])">{{ prop[1] || 'N/A' }}</p>
